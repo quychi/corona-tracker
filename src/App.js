@@ -32,13 +32,13 @@ function App() {
     setState({ data: getCountry, country: country });
   }
 
-  const { data } = state;
+  const { data, country } = state;
 
   return (
     <div className={styles.container}>
       <Cards data={data}/>
       <CountryPicker handleCountryChange={handleCountryChange}/>
-      <Chart />
+      <Chart data={data} country={country} />
     </div>
   );
 }
