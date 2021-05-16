@@ -11,13 +11,13 @@ import { useEffect, useState } from 'react'
 
 function App() {
 
-  const [state, setState] = useState({ data: {} });
+  const [state, setState] = useState({ data: {}, country: "" });
 
   useEffect( () => {
     const test = async function getDataFromAsyncFunc() {
       const getData = await fetchData();
   
-      // console.log(getData);
+      console.log(getData);
       setState({ data: getData });
     }
     test();
@@ -26,12 +26,18 @@ function App() {
   }, []);
   // console.log('test',state);
 
+  const handleCountryChange = async(country) => {
+    const getCountry = await fetchData(country);
+
+    setState({ data: getCountry, country: country });
+  }
+
   const { data } = state;
 
   return (
     <div className={styles.container}>
       <Cards data={data}/>
-      <CountryPicker />
+      <CountryPicker handleCountryChange={handleCountryChange}/>
       <Chart />
     </div>
   );

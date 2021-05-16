@@ -15,7 +15,7 @@ const Chart = () => {
         fetchAPI();
     },[]);
 
-    const lineChart = (         //what kind?
+    const lineChart = (         //what kind? return
         dailyData.length                //nếu mảng rỗng null (state để mảng [] để dễ check đkien)
             ? (
                 <Line 
